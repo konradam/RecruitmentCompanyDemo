@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RecruitmentCompanyDemo.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RecruitmentCompanyDemo.Interfaces
@@ -8,5 +9,6 @@ namespace RecruitmentCompanyDemo.Interfaces
     {
         int CreateJobCandidate(JobCandidate jobCandidate);
         JobCandidate GetJobCandidateById(int id);
+        List<JobCandidate> GetAllJobCandidates();
     }
 }

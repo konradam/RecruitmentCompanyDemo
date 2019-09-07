@@ -27,6 +27,11 @@ namespace RecruitmentCompanyDemo.Services
                 return null;
         }
 
+        public List<JobCandidate> GetAllJobCandidates()
+        {
+            return jobCandidates.Select(x => x.Value).ToList();
+        }
+
         private int GenerateId()
         {
             return jobCandidates.Keys.Count + 1;

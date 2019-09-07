@@ -26,9 +26,15 @@ namespace RecruitmentCompanyDemo.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<JobCandidate> Get(int id)
+        public ActionResult<JobCandidate> GetJobCandidateById(int id)
         {
             return _jobOffersService.GetJobCandidateById(id);
+        }
+
+        [HttpGet]
+        public ActionResult<List<JobCandidate>> GetAllJobCandidates()
+        {
+            return _jobOffersService.GetAllJobCandidates();
         }
     }
 }

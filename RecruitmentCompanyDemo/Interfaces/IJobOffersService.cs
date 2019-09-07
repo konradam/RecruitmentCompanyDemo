@@ -11,5 +11,6 @@ namespace RecruitmentCompanyDemo.Interfaces
         JobCandidate GetJobCandidateById(int id);
         List<JobCandidate> GetAllJobCandidates();
         bool UpdateJobCandidate(JobCandidate jobCandidate);
+        bool DeleteJobCandidate(int id);
     }
 }

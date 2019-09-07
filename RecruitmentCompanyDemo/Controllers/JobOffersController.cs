@@ -42,5 +42,11 @@ namespace RecruitmentCompanyDemo.Controllers
         {
             return _jobOffersService.UpdateJobCandidate(jobCandidate);
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult<bool> DeleteJobCandidate(int id)
+        {
+            return _jobOffersService.DeleteJobCandidate(id);
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace RecruitmentCompanyDemo.Services
     public class JobOffersService : IJobOffersService
     {
         private static Dictionary<int, JobCandidate> jobCandidates = new Dictionary<int, JobCandidate>();
+        private static int uniqueKey = 0;
 
         public int CreateJobCandidate(JobCandidate jobCandidate)
         {
@@ -45,9 +46,22 @@ namespace RecruitmentCompanyDemo.Services
             }
         }
 
+        public bool DeleteJobCandidate(int id)
+        {
+            if (jobCandidates.ContainsKey(id))
+            {
+                jobCandidates.Remove(id);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private int GenerateId()
         {
-            return jobCandidates.Keys.Count + 1;
+            return ++uniqueKey;
         }
     }
 }

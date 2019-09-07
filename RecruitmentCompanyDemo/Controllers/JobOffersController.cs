@@ -36,5 +36,11 @@ namespace RecruitmentCompanyDemo.Controllers
         {
             return _jobOffersService.GetAllJobCandidates();
         }
+
+        [HttpPut]
+        public ActionResult<bool> UpdateJobCandidate([FromBody] JobCandidate jobCandidate)
+        {
+            return _jobOffersService.UpdateJobCandidate(jobCandidate);
+        }
     }
 }

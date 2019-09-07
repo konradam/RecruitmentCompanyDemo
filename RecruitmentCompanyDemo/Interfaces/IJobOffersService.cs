@@ -10,5 +10,6 @@ namespace RecruitmentCompanyDemo.Interfaces
         int CreateJobCandidate(JobCandidate jobCandidate);
         JobCandidate GetJobCandidateById(int id);
         List<JobCandidate> GetAllJobCandidates();
+        bool UpdateJobCandidate(JobCandidate jobCandidate);
     }
 }

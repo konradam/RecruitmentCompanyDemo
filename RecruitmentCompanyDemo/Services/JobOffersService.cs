@@ -32,6 +32,19 @@ namespace RecruitmentCompanyDemo.Services
             return jobCandidates.Select(x => x.Value).ToList();
         }
 
+        public bool UpdateJobCandidate(JobCandidate jobCandidate)
+        {
+            if (jobCandidates.ContainsKey(jobCandidate.Id))
+            {
+                jobCandidates[jobCandidate.Id] = jobCandidate;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private int GenerateId()
         {
             return jobCandidates.Keys.Count + 1;

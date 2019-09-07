@@ -20,7 +20,7 @@ namespace RecruitmentCompanyDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult<int> CreateJobCandidate([FromBody] JobCandidate jobCandidate)
+        public ActionResult<JobCandidate> CreateJobCandidate([FromBody] JobCandidate jobCandidate)
         {
             return _jobOffersService.CreateJobCandidate(jobCandidate);
         }
@@ -32,9 +32,9 @@ namespace RecruitmentCompanyDemo.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<JobCandidate>> GetAllJobCandidates()
+        public ActionResult<List<JobCandidate>> GetJobCandidates([FromQuery]string firstName, [FromQuery]string lastName, [FromQuery]string jobTitle, [FromQuery]string companyName)
         {
-            return _jobOffersService.GetAllJobCandidates();
+            return _jobOffersService.GetJobCandidates(firstName, lastName, jobTitle, companyName);
         }
 
         [HttpPut]

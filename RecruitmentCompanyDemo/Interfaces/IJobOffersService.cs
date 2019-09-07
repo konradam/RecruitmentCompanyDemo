@@ -7,9 +7,9 @@ namespace RecruitmentCompanyDemo.Interfaces
 {
     public interface IJobOffersService
     {
-        int CreateJobCandidate(JobCandidate jobCandidate);
+        JobCandidate CreateJobCandidate(JobCandidate jobCandidate);
         JobCandidate GetJobCandidateById(int id);
-        List<JobCandidate> GetAllJobCandidates();
+        List<JobCandidate> GetJobCandidates(string firstName, string lastName, string jobTitle, string companyName);
         bool UpdateJobCandidate(JobCandidate jobCandidate);
         bool DeleteJobCandidate(int id);
     }

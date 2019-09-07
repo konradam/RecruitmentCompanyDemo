@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RecruitmentCompanyDemo.Interfaces;
+using RecruitmentCompanyDemo.Models;
 
 namespace RecruitmentCompanyDemo.Controllers
 {
@@ -16,6 +17,12 @@ namespace RecruitmentCompanyDemo.Controllers
         public JobOffersController(IJobOffersService jobOffersService)
         {
             _jobOffersService = jobOffersService;
+        }
+
+        [HttpPost]
+        public int CreateJobCandidate([FromBody] JobCandidate jobCandidate)
+        {
+            return _jobOffersService.CreateJobCandidate(jobCandidate);
         }
     }
 }

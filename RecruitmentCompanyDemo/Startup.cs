@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using RecruitmentCompanyDemo.Extensions;
 using RecruitmentCompanyDemo.Interfaces;
 using RecruitmentCompanyDemo.Models;
 using RecruitmentCompanyDemo.Services;
@@ -45,6 +46,8 @@ namespace RecruitmentCompanyDemo
             {
                 app.UseHsts();
             }
+
+            app.ConfigureExceptionHandler();
 
             app.UseHttpsRedirection();
             app.UseMvc();

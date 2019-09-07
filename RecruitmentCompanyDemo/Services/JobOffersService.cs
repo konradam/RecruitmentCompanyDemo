@@ -10,27 +10,38 @@ namespace RecruitmentCompanyDemo.Services
 {
     public class JobOffersService : IJobOffersService
     {
-        private static Dictionary<int, JobCandidate> jobCandidates = new Dictionary<int, JobCandidate>();
+        private IDictionary<int, JobCandidate> _jobCandidates;
         private static int uniqueKey = 0;
+
+        public JobOffersService(IDictionary<int, JobCandidate> jobCandidates)
+        {
+            _jobCandidates = jobCandidates;
+        }
 
         public JobCandidate CreateJobCandidate(JobCandidate jobCandidate)
         {
             jobCandidate.Id = GenerateId();
-            jobCandidates.Add(jobCandidate.Id, jobCandidate);
+            _jobCandidates.Add(jobCandidate.Id, jobCandidate);
             return jobCandidate;
         }
 
         public JobCandidate GetJobCandidateById(int id)
         {
-            if (jobCandidates.ContainsKey(id))
-                return jobCandidates[id];
+            if (_jobCandidates.ContainsKey(id))
+            {
+                JobCandidate jobCandidate;
+                _jobCandidates.TryGetValue(id, out jobCandidate);
+                return jobCandidate;
+            }
             else
+            {
                 return null;
+            }
         }
 
         public List<JobCandidate> GetJobCandidates(string firstName, string lastName, string jobTitle, string companyName)
         {
-            return jobCandidates.Select(x => x.Value)
+            return _jobCandidates.Select(x => x.Value)
                 .Where(y => string.IsNullOrWhiteSpace(firstName) || y.FirstName == firstName)
                 .Where(y => string.IsNullOrWhiteSpace(lastName) || y.LastName == lastName)
                 .Where(y => string.IsNullOrWhiteSpace(jobTitle) || y.JobTitle == jobTitle)
@@ -40,9 +51,9 @@ namespace RecruitmentCompanyDemo.Services
 
         public bool UpdateJobCandidate(JobCandidate jobCandidate)
         {
-            if (jobCandidates.ContainsKey(jobCandidate.Id))
+            if (_jobCandidates.ContainsKey(jobCandidate.Id))
             {
-                jobCandidates[jobCandidate.Id] = jobCandidate;
+                _jobCandidates[jobCandidate.Id] = jobCandidate;
                 return true;
             }
             else
@@ -53,9 +64,9 @@ namespace RecruitmentCompanyDemo.Services
 
         public bool DeleteJobCandidate(int id)
         {
-            if (jobCandidates.ContainsKey(id))
+            if (_jobCandidates.ContainsKey(id))
             {
-                jobCandidates.Remove(id);
+                _jobCandidates.Remove(id);
                 return true;
             }
             else

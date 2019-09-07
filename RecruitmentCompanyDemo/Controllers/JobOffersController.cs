@@ -8,7 +8,7 @@ using RecruitmentCompanyDemo.Models;
 
 namespace RecruitmentCompanyDemo.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/jobOffers")]
     [ApiController]
     public class JobOffersController : ControllerBase
     {

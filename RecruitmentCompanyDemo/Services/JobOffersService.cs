@@ -19,9 +19,17 @@ namespace RecruitmentCompanyDemo.Services
             return jobCandidate.Id;
         }
 
+        public JobCandidate GetJobCandidateById(int id)
+        {
+            if (jobCandidates.ContainsKey(id))
+                return jobCandidates[id];
+            else
+                return null;
+        }
+
         private int GenerateId()
         {
-            return jobCandidates.Keys.Max() + 1;
+            return jobCandidates.Keys.Count + 1;
         }
     }
 }

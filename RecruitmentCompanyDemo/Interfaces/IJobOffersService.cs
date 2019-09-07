@@ -7,5 +7,6 @@ namespace RecruitmentCompanyDemo.Interfaces
     public interface IJobOffersService
     {
         int CreateJobCandidate(JobCandidate jobCandidate);
+        JobCandidate GetJobCandidateById(int id);
     }
 }

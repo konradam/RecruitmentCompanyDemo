@@ -20,9 +20,15 @@ namespace RecruitmentCompanyDemo.Controllers
         }
 
         [HttpPost]
-        public int CreateJobCandidate([FromBody] JobCandidate jobCandidate)
+        public ActionResult<int> CreateJobCandidate([FromBody] JobCandidate jobCandidate)
         {
             return _jobOffersService.CreateJobCandidate(jobCandidate);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<JobCandidate> Get(int id)
+        {
+            return _jobOffersService.GetJobCandidateById(id);
         }
     }
 }
